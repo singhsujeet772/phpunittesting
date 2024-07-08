@@ -10,7 +10,7 @@ class QueueTest extends TestCase
     {
         $this->queue = new Queue;
     }
-    
+
     protected function tearDown(): void
     {
         unset($this->queue);
@@ -38,4 +38,12 @@ class QueueTest extends TestCase
         
         $this->assertEquals('green', $item);
     }    
+
+    public function testAnItemIsRemovedFromTheFrontOfTheQueue()
+    {
+        $this->queue->push('first');
+        $this->queue->push('second');
+        
+        $this->assertEquals('first', $this->queue->pop());
+    }  
 }
